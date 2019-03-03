@@ -18,7 +18,7 @@ pipeline {
         dir('ansible-wrk') {
           git credentialsId: 'creds', url: 'inventory.git'
         }
-        // moving inventory files to right location
+        // moving inventory,cfg,plauy files to right location
         sh 'mv ansible-wrk/ansible.cfg ansible-wrk/plays ansible-wrk/inventory .'
         // prepare dependencies passwords
         withCredentials([usernameColonPassword(credentialsId: 'creds2', variable: 'BITBUCKET')]) {
